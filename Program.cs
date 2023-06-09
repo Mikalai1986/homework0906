@@ -7,9 +7,11 @@ int number1 = Convert.ToInt32(Console.ReadLine());
 Console.Write("Ведите второе число:");
 int number2 = Convert.ToInt32(Console.ReadLine());
 if (number1 == number2)
-    Console.Write( number1 +  " равно " + number2);
+    Console.Write("A="+ number1 +  " равно B=" + number2);
     else
         if (number1 > number2)
-         Console.Write( number1 +  " max ");
+         Console.Write( "A=" + number1 + ", B=" + number2 +  " ->  max=" + number1);
     else
-    Console.Write(number2 +" max ");    
+    Console.Write( "A=" + number1 + ", B=" + number2 +  " ->  max=" + number2);   
+    
+    // Задача 4: Напишите программу, которая принимает на вход три числа и выдает максимальное из этих чисел.
