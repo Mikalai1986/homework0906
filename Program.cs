@@ -54,3 +54,13 @@ while (count <= num)
 782 -> 8
 918 -> 1
 */
+int SecondNumb(string message)
+{
+Console.WriteLine(message);
+int num = Convert.ToInt32(Console.ReadLine());
+int first = num % 100;
+int second = first / 10;
+return second;
+}
+int numb = SecondNumb("Введите трехзначное число:");
+Console.WriteLine(numb);
