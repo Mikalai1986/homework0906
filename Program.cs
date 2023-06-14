@@ -56,11 +56,39 @@ while (count <= num)
 */
 int SecondNumb(string message)
 {
-Console.WriteLine(message);
-int num = Convert.ToInt32(Console.ReadLine());
-int first = num % 100;
-int second = first / 10;
-return second;
+    Console.WriteLine(message);
+    int num = Convert.ToInt32(Console.ReadLine());
+    return num;
+    
 }
-int numb = SecondNumb("Введите трехзначное число:");
-Console.WriteLine(numb);
+    int numb = SecondNumb("Введите трехзначное число:");
+     if (numb < 100 || numb > 1000)
+    {
+        Console.WriteLine("Число - не трехзначное");
+       
+        return;
+    }
+    else
+    numb = numb/10 % 10;
+    Console.WriteLine(numb);
+    /*
+    Задача 13: Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
+    645 -> 5
+    78 -> третьей цифры нет
+    32679 -> 6
+    
+    int ThirdNumb(string message)
+    {
+        Console.WriteLine(message);
+        int numb = Convert.ToInt32(Console.ReadLine());
+
+        int third = -1;
+        if (numb >= 100)
+            third = numb % 10;
+        else
+            Console.WriteLine("Третьей цифры нет");
+        return third;
+    }
+    int res = ThirdNumb("Введите число");
+    Console.WriteLine(res);
+    */
