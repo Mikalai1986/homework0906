@@ -25,7 +25,7 @@ else
     Console.WriteLine($"Число {fin} - палиндром");
 
 Напишите программу, которая на вход принимает координаты двух точек и находит между ними расстояние в 3d пространстве
-*/
+
 int InputNum(string message) 
 {
     Console.Write(message);
@@ -46,3 +46,18 @@ int zb = InputNum("введите Z точки B:");
 
 double res = Quart(xa, ya, za, xb, yb, zb);
 Console.WriteLine($"Растояние между точками = {res}");
+Задача 23. Напишите программу, которая на ввод принимает число N, и выдает таблицу кубов чисел от одного до N
+*/
+int InputNum(string message)
+{Console.WriteLine(message);
+int num = int.Parse(Console.ReadLine()!);
+return num;
+}
+int res = InputNum("Введите число N: ");
+
+for (int i = 1; i <= res; i++)
+if (i < res)
+Console.Write($"{Math.Pow(i,3)}, ");
+else
+Console.Write($"{Math.Pow(i,3)}. ");
+    
