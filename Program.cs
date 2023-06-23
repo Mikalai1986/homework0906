@@ -1,63 +1,49 @@
-﻿/*Console.WriteLine("Введите число N: ");
-int num = int.Parse(Console.ReadLine()!);
-int temp = num;
-int fin = num;
-int count = 0;
-while (temp != 0)
-{
-    temp = temp/10;
-    count++;
-}
-int[] array = new int[count];
-for (int i = count-1; i >= 0; i--)
-{
-    array[i] = num % 10;
-    num = num / 10;
-}int srav = 0;
-for ( int  i = 0; i <= (count -1)/2; i++)
-if (array[i] == array[count-1-i])
-Console.Write("");
-else
-srav++;
-if (srav>0)
-    Console.WriteLine($"Число {fin} - не палиндром");
-else
-    Console.WriteLine($"Число {fin} - палиндром");
-
-Напишите программу, которая на вход принимает координаты двух точек и находит между ними расстояние в 3d пространстве
-
-int InputNum(string message) 
+﻿/*Задайте массив заполненный случайными положительными трехзначными числами. Напишите программу, которая покажет количество четных чисел в массиве
+*/
+int InputNum(string message)
 {
     Console.Write(message);
     return int.Parse(Console.ReadLine()!);
 }
-double Quart(int xa, int ya, int za, int xb, int yb, int zb)
+
+int[] CreateArray(int size)
 {
-   double sq = Math.Sqrt(Math.Pow(xb-xa,2)+Math.Pow(yb-ya,2)+Math.Pow(zb-za,2)); 
-   return sq;
+    return new int[size];
 }
-int xa = InputNum("введите Х точки А:");
-int ya = InputNum("введите Y точки А:");
-int za = InputNum("введите Z точки А:");
 
-int xb = InputNum("введите Х точки В:");
-int yb = InputNum("введите Y точки В:");
-int zb = InputNum("введите Z точки B:");
-
-double res = Quart(xa, ya, za, xb, yb, zb);
-Console.WriteLine($"Растояние между точками = {res}");
-Задача 23. Напишите программу, которая на ввод принимает число N, и выдает таблицу кубов чисел от одного до N
-*/
-int InputNum(string message)
-{Console.WriteLine(message);
-int num = int.Parse(Console.ReadLine()!);
-return num;
+void FillArray(int[] array)
+{
+    Random rnd = new Random(); 
+    for (int i = 0; i < array.Length; i++)
+        array[i] = rnd.Next(100, 1000);
 }
-int res = InputNum("Введите число N: ");
+string PrintArray(int[] array)
+{
+    string res = String.Empty;
+    for (int i = 0; i < array.Length; i++)
+        res += array[i] + " ";
+    return res;
+}
 
-for (int i = 1; i <= res; i++)
-if (i < res)
-Console.Write($"{Math.Pow(i,3)}, ");
-else
-Console.Write($"{Math.Pow(i,3)}. ");
-    
+int chetkol(int[] array)
+{
+    int index = 0;
+    for (int i = 0; i < array.Length; i++)
+        if (array[i] % 2 == 0)
+            index++;
+    return index;
+}
+
+
+int size = InputNum("Введите размер массива: ");
+
+
+int[] myArray = CreateArray(size);
+FillArray(myArray);
+string txt = PrintArray(myArray);
+Console.WriteLine(txt);
+
+int kol = chetkol(myArray);
+
+
+Console.WriteLine($"Количество четных элементов  равно: {kol}");
