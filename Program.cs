@@ -1,160 +1,76 @@
-﻿/*Задайте массив заполненный случайными положительными трехзначными числами. Напишите программу, которая покажет количество четных чисел в массиве
+﻿/*
+Задача 25: Напишите цикл, который принимает на вход два числа (A и B) и возводит число A в натуральную степень B.
+3, 5 -> 243 (3⁵)
+2, 4 -> 16
 
-int InputNum(string message)
-{
-    Console.Write(message);
-    return int.Parse(Console.ReadLine()!);
+
+int MathPow(int A, int B)
+{int Res = A;
+    for (int i = 1; i < B; i++)
+    Res = Res*A;
+return Res;
 }
+Console.WriteLine("Введите число А");
+int A1 = int.Parse(Console.ReadLine()!);
 
-int[] CreateArray(int size)
-{
-    return new int[size];
-}
-
-void FillArray(int[] array)
-{
-    Random rnd = new Random(); 
-    for (int i = 0; i < array.Length; i++)
-        array[i] = rnd.Next(100, 1000);
-}
-string PrintArray(int[] array)
-{
-    string res = String.Empty;
-    for (int i = 0; i < array.Length; i++)
-        res += array[i] + " ";
-    return res;
-}
-
-int chetkol(int[] array)
-{
-    int index = 0;
-    for (int i = 0; i < array.Length; i++)
-        if (array[i] % 2 == 0)
-            index++;
-    return index;
-}
+Console.WriteLine("Введите степень B");
+int B1 = int.Parse(Console.ReadLine()!);
+int result = MathPow(A1, B1);
+Console.WriteLine($"число {A1} в степени {B1} = {result}");
+Задача 27: Напишите программу, которая принимает на вход число и выдаёт сумму цифр в числе.
+452 -> 11
+82 -> 10
+9012 -> 12
 
 
-int size = InputNum("Введите размер массива: ");
-
-
-int[] myArray = CreateArray(size);
-FillArray(myArray);
-string txt = PrintArray(myArray);
-Console.WriteLine(txt);
-
-int kol = chetkol(myArray);
-
-
-Console.WriteLine($"Количество четных элементов  равно: {kol}");
-Задайте одномерный массив, заполненный случайными числами. Найдите сумму элементов, стоящих на нечетных позициях
-
-int InputNum(string message)
-{
-    Console.Write(message);
-    return int.Parse(Console.ReadLine()!);
-}
-
-int[] CreateArray(int size)
-{
-    return new int[size];
-}
-
-void FillArray(int[] array)
-{
-    Random rnd = new Random(); 
-    for (int i = 0; i < array.Length; i++)
-        array[i] = rnd.Next(100);
-}
-string PrintArray(int[] array)
-{
-    string res = String.Empty;
-    for (int i = 0; i < array.Length; i++)
-        res += array[i] + " ";
-    return res;
-}
-
-int sumchet(int[] array)
+int Summa(int A)
 {
     int sum = 0;
-    for (int i = 0; i < array.Length; i=i+2)
-        sum = sum + array[i];
+    while (A>0)
+    {sum = sum + A % 10;
+    A = A / 10;
+    }
     return sum;
 }
-
-
-int size = InputNum("Введите размер массива: ");
-
-
-int[] myArray = CreateArray(size);
-FillArray(myArray);
-string txt = PrintArray(myArray);
-Console.WriteLine(txt);
-
-int summ = sumchet(myArray);
-
-
-Console.WriteLine($"Сумма нечетных элементов массива равна: {summ}");
-38. Задайте массив вещественных чисел. Найдите разницу между максимальным и минимальным элементов массива
-
+Console.WriteLine("Введите число: ");
+int A1 = int.Parse(Console.ReadLine()!);
+int res = Summa(A1);
+Console.WriteLine($"Сумма цифр числа {A1} равна {res}");
+Задача 29: Напишите программу, которая задаёт массив из 8 элементов и выводит их на экран.
+1, 2, 5, 7, 19 -> [1, 2, 5, 7, 19]
+6, 1, 33 -> [6, 1, 33]
 */
+
 int InputNum(string message)
 {
     Console.Write(message);
     return int.Parse(Console.ReadLine()!);
 }
 
-double[] CreateArray(int size)
+int[] CreateArray(int size)
 {
-    return new double[size];
+    return new int[size];
 }
 
-void FillArray(double[] array)
+void FillArray(int[] array, int min, int max)
 {
-    Random rnd = new Random(); 
+    Random rnd = new Random(); // создание экземпляра класса Random
     for (int i = 0; i < array.Length; i++)
-        array[i] = Math.Round(rnd.Next(-100,100) + rnd.NextDouble(), 2); 
+        array[i] = rnd.Next(min, max + 1); // [min, max) полуинтервал
+    // array[i] = new Random().Next(min, max + 1)
 }
-string PrintArray(double[] array)
+string PrintArray(int[] array)
 {
     string res = String.Empty;
     for (int i = 0; i < array.Length; i++)
         res += array[i] + " ";
     return res;
 }
-
-double Maxel(double[] array)
-{
-    double max = array[0];
-    for (int i = 1; i < array.Length; i++)
-        if (array[i] > max)
-            max= array[i];
-    return max;
-}
-double Minel(double[] array)
-{
-    double min = array[0];
-    for (int i = 1; i < array.Length; i++)
-        if (array[i] < min)
-            min = array[i];
-    return min;
-}
-double Diff(double max, double min)
-{
-    double dif = max - min;
-    return dif;
-}
-
 int size = InputNum("Введите размер массива: ");
-double[] myArray = CreateArray(size);
-FillArray(myArray);
+int minValue = InputNum("Введите минимальное значение элемента: ");
+int maxValue = InputNum("Введите максимальное значение элемента: ");
+
+int[] myArray = CreateArray(size);
+FillArray(myArray, minValue, maxValue);
 string txt = PrintArray(myArray);
 Console.WriteLine(txt);
-
-double max1 = Maxel(myArray);
-double min1 = Minel(myArray);
-
-Console.WriteLine($"максимальный элемент равен {max1}");
-Console.WriteLine($"минимальный элемент {min1}");
-double result = Diff(max1, min1);
-Console.WriteLine($"Разница между макс и мин элементами =  {result}");
